@@ -8,4 +8,4 @@ Built With :-
 - Canvas,Socket.io API
 
 How to run?
-- node app.js
+- open terminal and write command : node app.js
