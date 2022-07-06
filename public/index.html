@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="user-scalable=no, width=1024px, initial-scale=1.0" />
+    <title>OpenBoard + IDE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- <div class="sticky-note">
+        <div class="header">
+            <div class="minimize"></div>
+            <div class="close"></div>
+        </div>
+        <div class="content">
+            <textarea></textarea>
+        </div>
+    </div> -->
+    <!-- size and color chooser for pencil -->
+    <div class="sizeSetter">
+        <div class="size-circle">
+            <div class="size1 size select"></div>
+            <div class="size2 size "></div>
+            <div class="size3 size "></div>
+            <div class="size4 size "></div>
+        </div>
+
+        <div class="color-circle">
+            <div class="row-1">
+                <div class="color black select"></div>
+                <div class="color red "></div>
+                <div class="color green"></div>
+                <div class="color yellow"></div>
+            </div>
+            <div class="row-2">
+                <div class="color pink"></div>
+                <div class="color white "></div>
+                <div class="color blue"></div>
+                <div class="color purple "></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- size chooser for erase -->
+    <div class="eraserSetter" id="check">
+        <div class="size-circle">
+            <div class="size1 size select"></div>
+            <div class="size2 size "></div>
+            <div class="size3 size "></div>
+            <div class="size4 size "></div>
+        </div>
+    </div>
+
+    <!-- tool bar -->
+    <div class="outer">
+        <div class="tool-bar">
+            <div id="pencil" class="grow" size="1.5">
+                <img src="./icons/Black_Pencil.svg" class="tool-img">
+            </div>
+            <div id="eraser" class="grow" size="5">
+                <img src="./icons/Eraser.svg" class="tool-img">
+            </div>
+            <div id="download" class="grow">
+                <img src="./icons/Download.svg" class="tool-img">
+            </div>
+            <div id="upload" class="grow">
+                <img src="./icons/Upload.svg" class="tool-img">
+            </div>
+            <div id="notes" class="grow">
+                <img src="./icons/StickyNote.svg" class="tool-img">
+            </div>
+            <div id="redo" class="grow">
+                <img src="./icons/Redo.svg" class="tool-img">
+            </div>
+            <div id="undo" class="grow">
+                <img src="./icons/Undo.svg" class="tool-img">
+            </div>
+            <div id="editorIcon" class="grow">
+                <img src="./icons/code-editor.png" class="tool-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- IDE -->
+    <div class="ide">
+        <div class="control-panel drag">
+            <div class="firstHalf">
+                <div class="selectlabel">Select Language</div>
+                <select id="languages" class="languages">
+                    <option value="c">C</option>
+                    <option value="cpp">C++</option>
+                    <option value="Java">Java</option>
+                    <option value="Python">Python</option>
+                </select>
+            </div>
+
+            <div class="secondHalf">
+                <div class="minimize-maximize circle"></div>
+                <div class="button-container">
+                    <button id="run">Run</button>
+                </div>
+            </div>
+        </div>
+        <div class="editor" id="editor"></div>
+
+        <div class="inOut">
+            <div class="width50">
+                <div class="label" height="30px" font-size="18px" padding-left="5px">Input : </div>
+                <textarea class="input hideScrollBar"></textarea>
+            </div>
+
+            <div class="width50">
+                <div class="label" height="30px" font-size="18px" padding-left="5px">Output : </div>
+                <textarea class="output hideScrollBar"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- canvas -->
+    <canvas class="canvas"></canvas>
+</body>
+
+<!-- html js inject-->
+
+
+<!-- for editor -->
+<script defer src="./lib/ace.js"></script>
+<script defer src="./lib/theme-monokai.js"></script>
+<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- for real time -->
+
+<script src="https://cdn.socket.io/4.4.0/socket.io.min.js" integrity="sha384-1fOn6VtTq3PWwfsOrk45LnYcGosJwzMHv+Xh/Jx5303FVOXzEnw0EpLv30mtjmlj" crossorigin="anonymous"></script>
+<script>
+    let socket = io.connect("http://localhost:5000");
+</script>
+
+<!-- script for user interaction -->
+<script src="script.js"></script>
+<script src="ide.js"></script>
+
+</html>
